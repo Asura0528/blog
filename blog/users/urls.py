@@ -1,1 +1,1 @@
-# 进行users 子应用的视图路由from django.urls import pathfrom users.views import RegisterViewurlpatterns = [    # path第一个参数：路由    # path第二个参数：视图函数名    path('register/', RegisterView.as_view(), name='register'),]
+# 进行users 子应用的视图路由from django.urls import pathfrom users.views import RegisterView, ImageCodeViewurlpatterns = [    # path第一个参数：路由    # path第二个参数：视图函数名    path('register/', RegisterView.as_view(), name='register'),    # 图片验证码的路由    path('imagecode/', ImageCodeView.as_view(), name='imagecode'),]
