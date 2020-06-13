@@ -103,6 +103,6 @@ class SmsCodeView(View):
         #   {1} 短信验证码
         #   {2} 短信验证码有效期
         # 参数3：免费开发测试使用的模板ID为1
-        CCP().send_template_sms(mobile, [{sms_code, 5}], 1)
+        CCP().send_template_sms(mobile, [sms_code, 5], 1)
         # 6.返回响应
         return JsonResponse({'code': RETCODE.OK, 'errmsg': '短信发送成功'})
