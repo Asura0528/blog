@@ -9,6 +9,8 @@ from random import randint
 from libs.yuntongxun.sms import CCP
 from users.models import User
 from django.db import DatabaseError
+from django.shortcuts import redirect
+from django.urls import reverse
 import logging
 import re
 logger = logging.getLogger('django')
@@ -63,15 +65,18 @@ class RegisterView(View):
         # 3、保存注册信息
         # creat_user 可以使用系统的方法对密码进行加密
         try:
-            user = User.objects.create_user(username=mobile,
-                                            mobile=mobile,
-                                            password=password)
-        except DatabaseError as e:
-            logger.error(e)
+           user = User.objects.create_user(username=mobile,
+                                           mobile=mobile,
+                                           password=password)
+        except DatabaseError:
+            # logger(e)
             return HttpResponseBadRequest('注册失败')
         # 4、返回跳转页面
         # 暂时返回一个注册成功的信息，后期再实现跳转到指定页面
-        return HttpResponse('注册成功，重定向到首页')
+        # redirect 是重定向
+        # reverse 是可以通过namespace:name 来获取到视图所对应的路由
+        return redirect(reverse('home:index'))
+        # return HttpResponse('注册成功，重定向到首页')
 
 
 class ImageCodeView(View):

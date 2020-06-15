@@ -1,0 +1,1 @@
+from django.urls import pathfrom home.views import IndexView# 首页路由urlpatterns = [    path('', IndexView.as_view(), name='index'),]
