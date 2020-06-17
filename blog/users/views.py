@@ -11,6 +11,7 @@ from users.models import User
 from django.db import DatabaseError
 from django.shortcuts import redirect
 from django.urls import reverse
+from django.contrib.auth import login
 import logging
 import re
 logger = logging.getLogger('django')
@@ -63,20 +64,28 @@ class RegisterView(View):
         if smscode != redis_sms_code.decode():
             return HttpResponseBadRequest('短信验证码不一致')
         # 3、保存注册信息
-        # creat_user 可以使用系统的方法对密码进行加密
+        # creat_user 可以使用系统的方法对密码进行加密，使用try创建加密用户
         try:
            user = User.objects.create_user(username=mobile,
                                            mobile=mobile,
                                            password=password)
-        except DatabaseError:
-            # logger(e)
+        except DatabaseError as e:
+            logger(e)
             return HttpResponseBadRequest('注册失败')
+        # 状态保持
+        login(request, user)
         # 4、返回跳转页面
         # 暂时返回一个注册成功的信息，后期再实现跳转到指定页面
         # redirect 是重定向
         # reverse 是可以通过namespace:name 来获取到视图所对应的路由
-        return redirect(reverse('home:index'))
+        response = redirect(reverse('home:index'))
         # return HttpResponse('注册成功，重定向到首页')
+
+        # 设置cookie信息，以方便首页中，用户信息展示的判断和用户信息的展示
+        response.set_cookie('is_login', True)
+        response.set_cookie('username', user.username, max_age=7*24*3600)
+
+        return response
 
 
 class ImageCodeView(View):
