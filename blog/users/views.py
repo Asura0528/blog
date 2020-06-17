@@ -11,7 +11,7 @@ from users.models import User
 from django.db import DatabaseError
 from django.shortcuts import redirect
 from django.urls import reverse
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 import logging
 import re
 logger = logging.getLogger('django')
@@ -88,6 +88,7 @@ class RegisterView(View):
         return response
 
 
+# 图片验证码
 class ImageCodeView(View):
 
     @staticmethod
@@ -121,6 +122,7 @@ class ImageCodeView(View):
         return HttpResponse(image, content_type='image/jpeg')
 
 
+# 短信验证码
 class SmsCodeView(View):
 
     @staticmethod
@@ -180,3 +182,64 @@ class SmsCodeView(View):
         CCP().send_template_sms(mobile, [sms_code, 5], 1)
         # 6.返回响应
         return JsonResponse({'code': RETCODE.OK, 'errmsg': '短信发送成功'})
+
+
+# 登录视图
+class LoginView(View):
+
+    @staticmethod
+    def get(request):
+        return render(request, 'login.html')
+
+    def post(self, request):
+        """
+        1.接收参数
+        2.参数的验证
+            2.1 验证手机号是否符合规则
+            2.2 验证密码是否符合规则
+        3.用户认证登录
+        4.状态的保持
+        5.根据用户选择的是否记住登录状态来进行判断
+        6.为了首页显示我们需要设置一些cookie信息
+        7.返回响应
+        :param request:
+        :return:
+        """
+        # 1.接收参数
+        mobile = request.POST.get('mobile')
+        password = request.POST.get('password')
+        remember = request.POST.get('remember')
+        # 2.参数的验证
+        #     2.1 验证手机号是否符合规则
+        if not re.match(r'^1[3-9]\d{9}$', mobile):
+            return HttpResponseBadRequest('手机号不符合规则')
+        #     2.2 验证密码是否符合规则
+        if not re.match(r'^[a-zA-Z0-9]{8,20}$', password):
+            return HttpResponseBadRequest('密码不符合规则')
+        # 3.用户认证登录
+        # 采用系统自带的认证方法进行认证
+        # 如果我们的用户名和密码正确，会返回user
+        # 如果我们的用户名或密码不正确，会返回None
+        # 默认的认证方法是针对于 username 字段进行用户名的判断
+        # 当前的判断信息是手机号所以我们需要修改一下认证字段
+        # 我们需要到User模型中进行修改，等测试出现问题的时候，我们再修改
+        user = authenticate(mobile=mobile, password=password)
+        if user is None:
+            return HttpResponseBadRequest('用户名或密码错误')
+        # 4.状态的保持
+        login(request, user)
+        # 5.根据用户选择的是否记住登录状态来进行判断
+        # 6.为了首页显示我们需要设置一些cookie信息
+        response = redirect(reverse('home:index'))
+        if remember != 'on':    # 没有记住用户信息
+            # 浏览器关闭之后
+            request.session.set_expiry(0)
+            response.set_cookie('is_login', True)
+            response.set_cookie('username', user.username, max_age=14*24*3600)
+        else:                   # 记住用户信息
+            # 默认是记住 2周
+            request.session.set_expiry(None)
+            response.set_cookie('is_login', True, max_age=14*24*3600)
+            response.set_cookie('username', user.username, max_age=14*24*3600)
+        # 7.返回响应
+        return response
