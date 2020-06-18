@@ -88,7 +88,7 @@ class RegisterView(View):
         return response
 
 
-# 图片验证码
+# 图片验证码视图
 class ImageCodeView(View):
 
     @staticmethod
@@ -122,7 +122,7 @@ class ImageCodeView(View):
         return HttpResponse(image, content_type='image/jpeg')
 
 
-# 短信验证码
+# 短信验证码视图
 class SmsCodeView(View):
 
     @staticmethod
@@ -257,4 +257,59 @@ class LogoutView(View):
         response = redirect(reverse('home:index'))
         # 退出登录时，删除cookie状态
         response.delete_cookie('is_login')
+        return response
+
+
+# 忘记密码视图
+class ForgetPasswordView(View):
+    @staticmethod
+    def get(request):
+        return render(request, 'forget_password.html')
+
+    def post(self, request):
+        # 接收参数
+        mobile = request.POST.get('mobile')
+        password = request.POST.get('password')
+        password2 = request.POST.get('password2')
+        smscode = request.POST.get('sms_code')
+
+        # 判断参数是否齐全
+        if not all([mobile, password, password2, smscode]):
+            return HttpResponseBadRequest('缺少必要的参数')
+
+        # 判断手机号码是否符合规则
+        if not re.match(r'^1[3-9]\d{9}$', mobile):
+            return HttpResponseBadRequest('请输入正确手机号')
+
+        # 判断密码是否符合规则（8-20位）
+        if not re.match(r'^[0-9a-zA-Z]{8,20}$', password):
+            return HttpResponseBadRequest('请输入8-20位密码')
+
+        # 判断密码是否一致
+        if password != password2:
+            return HttpResponseBadRequest('两次输入的密码不一致')
+
+        # 验证短信验证码
+        redis_conn = get_redis_connection('default')
+        sms_code_server = redis_conn.get('sms:%s' % mobile)
+        # 如果redis库中找不到
+        if sms_code_server is None:
+            return HttpResponseBadRequest('短信验证码已过期')
+        # 如果输入的验证码和redis库中的验证码不一致
+        if smscode != sms_code_server.decode():
+            return HttpResponseBadRequest('短信验证码错误')
+
+        # 根据手机号查询数据
+        try:
+            user = User.objects.get(mobile=mobile)
+        # 如果手机号不存在
+        except User.DoesNotExist():
+            return HttpResponseBadRequest('修改失败，手机不存在')
+        # 如果手机号存在
+        else:
+            user.set_password(password)
+            user.save()
+
+        # 返回响应
+        response = redirect(reverse('users:login'))
         return response

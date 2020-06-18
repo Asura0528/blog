@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4e23625e-5cf4-45c0-8e74-4097195a5d82" name="Default Changelist" comment="">
+    <list default="true" id="4e23625e-5cf4-45c0-8e74-4097195a5d82" name="Default Changelist" comment="实现登出功能">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blog/tamplates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/tamplates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/static/forget_password.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/tamplates/forget_password.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blog/tamplates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/blog/tamplates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/users/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blog/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/blog/users/views.py" afterDir="false" />
     </list>
@@ -15,7 +16,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/blog$manage.coverage" NAME="manage Coverage Results" MODIFIED="1591070472962" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/blog" />
-    <SUITE FILE_PATH="coverage/blog$settings.coverage" NAME="settings Coverage Results" MODIFIED="1592450875670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/blog/blog" />
+    <SUITE FILE_PATH="coverage/blog$settings.coverage" NAME="settings Coverage Results" MODIFIED="1592462963755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/blog/blog" />
     <SUITE FILE_PATH="coverage/blog$urls.coverage" NAME="urls Coverage Results" MODIFIED="1591068998358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/blog/blog" />
     <SUITE FILE_PATH="coverage/blog$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1591068974650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/blog/blog" />
     <SUITE FILE_PATH="coverage/blog$views.coverage" NAME="views Coverage Results" MODIFIED="1592355412011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/blog/users" />
@@ -26,36 +27,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blog/users/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="693">
-              <caret line="259" column="23" selection-start-line="259" selection-start-column="23" selection-end-line="259" selection-end-column="23" />
+            <state relative-caret-position="625">
+              <caret line="310" column="23" selection-start-line="310" selection-start-column="23" selection-end-line="310" selection-end-column="23" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <element signature="e#647#2957#0" />
                 <element signature="e#3000#3917#0" />
                 <element signature="e#3958#5892#0" />
-                <element signature="e#5930#7851#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/tamplates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="349">
-              <caret line="64" column="40" lean-forward="true" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/blog/users/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="19" column="57" selection-start-line="19" selection-start-column="57" selection-end-line="19" selection-end-column="57" />
+            <state relative-caret-position="308">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#19#47#0" expanded="true" />
               </folding>
@@ -64,65 +54,21 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/tamplates/login.html">
+        <entry file="file://$PROJECT_DIR$/blog/tamplates/forget_password.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="81">
-              <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+            <state relative-caret-position="132">
+              <caret line="90" column="23" lean-forward="true" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/static/js/index.js">
+        <entry file="file://$PROJECT_DIR$/blog/users/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="29" selection-start-line="3" selection-start-column="29" selection-end-line="3" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/utils/__init__.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/manage.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            <state relative-caret-position="317">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
               <folding>
-                <element signature="e#84#93#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Envs/blog/Lib/site-packages/django/core/handlers/exception.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Envs/blog/Lib/site-packages/django/views/debug.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6930">
-              <caret line="330" column="85" selection-start-line="330" selection-start-column="85" selection-end-line="330" selection-end-column="85" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/blog/blog/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="858">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
-              <folding>
-                <element signature="e#628#660#0" expanded="true" />
+                <element signature="e#0#28#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,19 +109,21 @@
         <option value="$PROJECT_DIR$/blog/home/urls.py" />
         <option value="$PROJECT_DIR$/blog/blog/urls.py" />
         <option value="$USER_HOME$/Envs/blog/Lib/site-packages/django/views/debug.py" />
-        <option value="$PROJECT_DIR$/blog/tamplates/login.html" />
         <option value="$PROJECT_DIR$/blog/users/models.py" />
         <option value="$PROJECT_DIR$/blog/static/js/index.js" />
-        <option value="$PROJECT_DIR$/blog/users/views.py" />
         <option value="$PROJECT_DIR$/blog/tamplates/index.html" />
+        <option value="$PROJECT_DIR$/blog/tamplates/login.html" />
         <option value="$PROJECT_DIR$/blog/users/urls.py" />
+        <option value="$PROJECT_DIR$/blog/users/views.py" />
+        <option value="$PROJECT_DIR$/blog/tamplates/forget_password.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="974" />
-    <option name="height" value="1047" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="976" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -221,16 +169,16 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Python" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\HP\Desktop\blog\utils" />
-      <recent name="C:\Users\HP\Desktop\blog\blog" />
-      <recent name="C:\Users\HP\Desktop\blog" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\HP\Desktop\blog\blog\tamplates" />
       <recent name="C:\Users\HP\Desktop\blog\blog\home" />
       <recent name="C:\Users\HP\Desktop\blog\blog\libs" />
       <recent name="C:\Users\HP\Desktop\blog\blog" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\HP\Desktop\blog\utils" />
+      <recent name="C:\Users\HP\Desktop\blog\blog" />
+      <recent name="C:\Users\HP\Desktop\blog" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -476,7 +424,7 @@
       <workItem from="1592355078355" duration="3712000" />
       <workItem from="1592379342054" duration="4684000" />
       <workItem from="1592404407000" duration="1916000" />
-      <workItem from="1592449065953" duration="1649000" />
+      <workItem from="1592449065953" duration="9004000" />
     </task>
     <task id="LOCAL-00001" summary="数据库配置">
       <created>1591065800821</created>
@@ -569,11 +517,18 @@
       <option name="project" value="LOCAL" />
       <updated>1592449712144</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="实现登出功能">
+      <created>1592450925319</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1592450925319</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73753000" />
+    <option name="totallyTimeSpent" value="81108000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -586,22 +541,21 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1476293" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1476293" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4983836" visible="true" weight="0.38988763" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49730605" weight="0.39775282" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49730605" weight="0.31460676" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49676725" visible="true" weight="0.39775282" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3280899" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32921347" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50269395" side_tool="true" weight="0.24382022" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5032328" side_tool="true" weight="0.39775282" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4989224" weight="0.33146068" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32921347" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -624,7 +578,8 @@
     <MESSAGE value="状态保持" />
     <MESSAGE value="实现手机号登录" />
     <MESSAGE value="首页用户信息展示" />
-    <option name="LAST_COMMIT_MESSAGE" value="首页用户信息展示" />
+    <MESSAGE value="实现登出功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="实现登出功能" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$USER_HOME$/Envs/blog/Lib/site-packages/django/db/backends/mysql/base.py">
@@ -705,13 +660,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
           <caret line="442" selection-start-line="442" selection-end-line="442" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/Anaconda3/Lib/selectors.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6138">
-          <caret line="283" selection-start-line="283" selection-end-line="283" />
         </state>
       </provider>
     </entry>
@@ -812,16 +760,6 @@
       </provider>
       <provider selected="true" editor-type-id="LogFileEditorProvider" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/tamplates/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1584">
-          <caret line="72" column="82" selection-start-line="72" selection-start-column="82" selection-end-line="72" selection-end-column="82" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#3;n#form#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/Anaconda3/Lib/threading.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19998">
@@ -859,16 +797,6 @@
     <entry file="file://$PROJECT_DIR$/blog/home/models.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/users/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/response_code.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -903,9 +831,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/Anaconda3/Lib/selectors.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="314" selection-start-line="314" selection-end-line="314" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/blog/blog/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="858">
+        <state relative-caret-position="427">
           <caret line="41" selection-start-line="41" selection-end-line="41" />
           <folding>
             <element signature="e#628#660#0" expanded="true" />
@@ -920,40 +855,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/blog/users/views.py">
+    <entry file="file://$PROJECT_DIR$/blog/tamplates/register.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="259" column="23" selection-start-line="259" selection-start-column="23" selection-end-line="259" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#647#2957#0" />
-            <element signature="e#3000#3917#0" />
-            <element signature="e#3958#5892#0" />
-            <element signature="e#5930#7851#0" />
-          </folding>
+        <state relative-caret-position="-1641">
+          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blog/tamplates/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="81">
-          <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+        <state relative-caret-position="1056">
+          <caret line="48" column="137" selection-start-line="48" selection-start-column="137" selection-end-line="48" selection-end-column="137" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blog/tamplates/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="64" column="40" lean-forward="true" selection-start-line="64" selection-start-column="40" selection-end-line="64" selection-end-column="40" />
+        <state relative-caret-position="-4092">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/users/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/tamplates/forget_password.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="90" column="23" lean-forward="true" selection-start-line="90" selection-start-column="23" selection-end-line="90" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/blog/users/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="57" selection-start-line="19" selection-start-column="57" selection-end-line="19" selection-end-column="57" />
+        <state relative-caret-position="308">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="e#19#47#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/blog/users/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="310" column="23" selection-start-line="310" selection-start-column="23" selection-end-line="310" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#3000#3917#0" />
+            <element signature="e#3958#5892#0" />
           </folding>
         </state>
       </provider>
