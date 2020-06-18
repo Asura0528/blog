@@ -239,6 +239,7 @@ class LoginView(View):
         else:                   # 记住用户信息
             # 默认是记住 2周
             request.session.set_expiry(None)
+            # 设置cookie
             response.set_cookie('is_login', True, max_age=14*24*3600)
             response.set_cookie('username', user.username, max_age=14*24*3600)
         # 7.返回响应
