@@ -11,7 +11,7 @@ from users.models import User
 from django.db import DatabaseError
 from django.shortcuts import redirect
 from django.urls import reverse
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 import logging
 import re
 logger = logging.getLogger('django')
@@ -243,4 +243,18 @@ class LoginView(View):
             response.set_cookie('is_login', True, max_age=14*24*3600)
             response.set_cookie('username', user.username, max_age=14*24*3600)
         # 7.返回响应
+        return response
+
+
+# 登出视图
+class LogoutView(View):
+
+    @staticmethod
+    def get(request):
+        # 清理session
+        logout(request)
+        # 退出登录，重定向到登录页
+        response = redirect(reverse('home:index'))
+        # 退出登录时，删除cookie状态
+        response.delete_cookie('is_login')
         return response
