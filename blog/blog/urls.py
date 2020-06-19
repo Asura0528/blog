@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
+from django.conf import settings
+from django.conf.urls.static import static
 
 # 导入系统的logging
 # import logging
@@ -39,3 +41,6 @@ urlpatterns = [
     # path('', log)
     path('', include(('home.urls', 'home'), namespace='home')),
 ]
+
+# 设置图片访问路由规则
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
