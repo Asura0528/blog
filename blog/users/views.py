@@ -234,7 +234,12 @@ class LoginView(View):
         login(request, user)
         # 5.根据用户选择的是否记住登录状态来进行判断
         # 6.为了首页显示我们需要设置一些cookie信息
-        response = redirect(reverse('home:index'))
+        # 根据next参数来进行页面的跳转
+        next_page = request.GET.get('next')
+        if next_page:
+            response = redirect(next_page)
+        else:
+            response = redirect(reverse('home:index'))
         if remember != 'on':    # 没有记住用户信息
             # 浏览器关闭之后
             request.session.set_expiry(0)
