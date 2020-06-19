@@ -196,3 +196,6 @@ LOGGING = {
 # 替换系统的User，使用自己定义的User
 # 配置信息 为 ‘子应用名.模块类名’
 AUTH_USER_MODEL = 'users.User'
+
+# 设置未登录用户的跳转路由（修改系统的未登录跳转连接）
+LOGIN_URL = '/login/'

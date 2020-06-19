@@ -12,8 +12,10 @@ from django.db import DatabaseError
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 import logging
 import re
+
 logger = logging.getLogger('django')
 
 
@@ -24,7 +26,8 @@ class RegisterView(View):
     def get(request):
         return render(request, 'register.html')
 
-    def post(self, request):
+    @staticmethod
+    def post(request):
         """
         1、接收参数
         2、验证参数
@@ -191,7 +194,8 @@ class LoginView(View):
     def get(request):
         return render(request, 'login.html')
 
-    def post(self, request):
+    @staticmethod
+    def post(request):
         """
         1.接收参数
         2.参数的验证
@@ -262,11 +266,13 @@ class LogoutView(View):
 
 # 忘记密码视图
 class ForgetPasswordView(View):
+
     @staticmethod
     def get(request):
         return render(request, 'forget_password.html')
 
-    def post(self, request):
+    @staticmethod
+    def post(request):
         # 接收参数
         mobile = request.POST.get('mobile')
         password = request.POST.get('password')
@@ -313,3 +319,14 @@ class ForgetPasswordView(View):
         # 返回响应
         response = redirect(reverse('users:login'))
         return response
+
+
+# 用户中心视图
+# LoginRequiredMixin
+# 如果用户未登录，则会进行默认跳转
+# 默认的跳转连接是：accounts/login/?next=xxx
+class UserCenterView(LoginRequiredMixin, View):
+
+    @staticmethod
+    def get(response):
+        return render(response, 'center.html')
