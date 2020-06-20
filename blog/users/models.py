@@ -9,6 +9,8 @@ class User(AbstractUser):
     mobile = models.CharField(max_length=11, unique=True, blank=False)
     #   修改手机为认证字段
     USERNAME_FIELD = 'mobile'
+    #   创建超级管理员必须输入的字段（不包括手机号和密码）
+    REQUIRED_FIELDS = ['username', 'email']
     #   头像
     #   upload_to上传位置, blank=True不必须填写
     avatar = models.ImageField(upload_to='avatar/%Y%m%d/', blank=True)
