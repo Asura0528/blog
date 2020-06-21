@@ -13,6 +13,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from home.models import ArticleCategory, Ariticle
 import logging
 import re
 
@@ -374,5 +375,49 @@ class UserCenterView(LoginRequiredMixin, View):
 class WriteBlogView(LoginRequiredMixin, View):
     @staticmethod
     def get(request):
-        return render(request, 'write_blog.html')
+        # 查询所有分类模型
+        categoies = ArticleCategory.objects.all()
+        context = {
+            'categories': categoies
+        }
+        return render(request, 'write_blog.html', context=context)
 
+    @staticmethod
+    def post(request):
+        # 接收数据
+        avatar = request.FILES.get('avatar')
+        title = request.POST.get('title')
+        category_id = request.POST.get('category')
+        tags = request.POST.get('tags')
+        sumary = request.POST.get('sumary')
+        content = request.POST.get('content')
+        user = request.user
+
+        # 验证数据是否齐全
+        if not all([avatar, title, category_id, sumary, content]):
+            return HttpResponseBadRequest('参数不齐')
+
+        # 判断文章分类id是否正确
+        try:
+            article_category = ArticleCategory.objects.get(id=category_id)
+        except ArticleCategory.DoesNotExist:
+            return HttpResponseBadRequest('没有此分类信息')
+
+        # 保存到数据库
+        try:
+            article = Ariticle.objects.create(
+                author=user,
+                avatar=avatar,
+                category=article_category,
+                tags=tags,
+                title=title,
+                sumary=sumary,
+                content=content
+            )
+        except Exception as e:
+            logger.error(e)
+            return HttpResponseBadRequest('保存失败，请稍候再试')
+
+        # 返回响应，跳转到文章详情页面
+        # 暂时先跳转到首页
+        return redirect(reverse('home:index'))
