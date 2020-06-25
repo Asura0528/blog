@@ -57,3 +57,9 @@ class IndexView(View):
             'page_num': page_num
         }
         return render(request, 'index.html', context=context)
+
+
+class DetailView(View):
+    @staticmethod
+    def get(request):
+        return render(request, 'detail.html')
