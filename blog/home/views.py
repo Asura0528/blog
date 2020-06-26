@@ -62,4 +62,21 @@ class IndexView(View):
 class DetailView(View):
     @staticmethod
     def get(request):
-        return render(request, 'detail.html')
+        # detail/?id=xxx&page_num=xxx&page_size=xxx
+        # 获取文档id
+        id = request.GET.get('id')
+
+        # 获取博客分类信息
+        categories = ArticleCategory.objects.all()
+
+        try:
+            article = Ariticle.objects.get(id=id)
+        except Ariticle.DoesNotExist:
+            return render(request, '404.html')
+
+        context = {
+            'categories': categories,
+            'category': article.category,
+            'article': article,
+        }
+        return render(request, 'detail.html', context=context)
