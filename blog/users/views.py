@@ -421,3 +421,22 @@ class WriteBlogView(LoginRequiredMixin, View):
         # 返回响应，跳转到文章详情页面
         # 暂时先跳转到首页
         return redirect(reverse('home:index'))
+
+
+class SelfBlogView(View):
+    @staticmethod
+    def get(request):
+        # 接收所有分类信息
+        categories = ArticleCategory.objects.all()
+        # 接收用户点击的分类id
+        cat_id = request.GET.get('cat_id', 1)
+        # 根据分类id进行分类的查询
+        category = ArticleCategory.objects.get(id=cat_id)
+
+        # 数据传递给模板
+        context = {
+            'categories': categories,
+            'category': category
+        }
+
+        return render(request, 'self_blog.html', context=context)
