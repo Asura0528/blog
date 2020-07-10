@@ -131,6 +131,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+TEMPLATES_DIRS = [
+    os.path.join(BASE_DIR, 'tamplates')
+]
+
 # redis的配置
 CACHES = {
     "default": {    # 默认
