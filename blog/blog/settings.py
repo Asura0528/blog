@@ -131,6 +131,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+# 设置模板路径
 TEMPLATES_DIRS = [
     os.path.join(BASE_DIR, 'tamplates')
 ]

@@ -423,7 +423,8 @@ class WriteBlogView(LoginRequiredMixin, View):
         return redirect(reverse('home:index'))
 
 
-class SelfBlogView(View):
+# 我的博客视图
+class SelfBlogView(LoginRequiredMixin, View):
     @staticmethod
     def get(request):
         # 接收所有分类信息
