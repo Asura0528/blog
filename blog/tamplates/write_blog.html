@@ -25,7 +25,7 @@
     <div class="container">
         <!-- 导航栏商标 -->
         <div>
-            <a class="navbar-brand" href="{% url 'home:index' %}">个人博客</a>
+            <a class="navbar-brand" href="{% url 'home:index' %}">个人帖子</a>
         </div>
     </div>
     <!--登录/个人中心-->
@@ -34,7 +34,7 @@
             <!-- 如果用户已经登录，则显示用户名下拉框 -->
             <li class="nav-item dropdown" v-if="is_login">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" @click="show_menu_click">[[username]]</a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="display: block" v-show="show_menu">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="display: block;" v-show="show_menu">
                     <a class="dropdown-item" href="{% url 'users:writeblog' %}">写文章</a>
                     <a class="dropdown-item" href='{% url 'users:center' %}'>个人信息</a>
                     <a class="dropdown-item" href='{% url 'users:logout' %}'>退出登录</a>
@@ -112,7 +112,7 @@
 <!-- Footer -->
 <footer class="py-3 bg-dark" id="footer">
     <div class="container">
-        <h5 class="m-0 text-center text-white">Copyright @ Asura</h5>
+        <h5 class="m-0 text-center text-white">Copyright &copy; Asura</h5>
     </div>
 </footer>
 </div>

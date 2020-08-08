@@ -100,3 +100,19 @@ class Comment(models.Model):
         db_table = 'tb_comment'
         verbose_name = '评论管理'
         verbose_name_plural = verbose_name
+
+
+# class ArticleSelf(models.Model):
+#     """
+#     个人文章模板
+#     """
+#     author = models.ForeignKey(User, on_delete=models.CASCADE)
+#     avatar = models.ImageField(upload_to='article/%Y%m%d', blank=True)
+#     category = models.ForeignKey(
+#         ArticleCategory,
+#         null=True,
+#         blank=True,
+#         on_delete=models.CASCADE,
+#         related_name='article'
+#     )
+#     pass
